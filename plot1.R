@@ -28,7 +28,10 @@ sub <- subset(power, Date == "2/1/2007" | Date == "2/2/2007")
 
 str(sub)
 
+png(file = "./ExData_Plotting1/plot1.png")
 hist(sub$Global_active_power, col="red", xlab="Global Active Power (kilowatts)", main = "Global Active Power")
+dev.off()
+
 
 
 
