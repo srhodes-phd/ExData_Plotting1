@@ -1,6 +1,7 @@
 # Exploratory Data Analysis
 # Project 1
 
+
 # create a folder for this course if it does not exist already 
 if (!file.exists("DS4")) {
       dir.create("DS4")
@@ -29,13 +30,22 @@ timetemp <- paste(sub$Date, sub$Time)
 sub$TimeCh <- strptime(timetemp, format = "%Y-%m-%d %H:%M:%S") 
 
 
-png(file = "./ExData_Plotting1/plot3.png")
+#png(file = "./ExData_Plotting1/plot4.png")
 
-with(sub, plot(TimeCh, Sub_metering_3, type = "n", ylab = "Energy Sub Metering", xlab = ""))
-with(sub, points(TimeCh, Sub_metering_1, type="l", col= "black"))
-with(sub, points(TimeCh, Sub_metering_2, type="l", col= "red"))
-with(sub, points(TimeCh, Sub_metering_3, type="l", col= "blue"))
-legend("topright", pch=1, col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3" ))
+par(mfrow = c(2,2))
+with(sub {
+      plot(sub$TimeCh,sub$Global_active_power,type = "l", xlab = "", ylab = "Global Active Power (kilowatts)")
+      plot(sub$TimeCh,sub$Votlage,type = "l", xlab = "datetime", ylab = "Voltage")
+      with(sub, plot(TimeCh, Sub_metering_1, type = "n", ylab = "Energy Sub Metering", xlab = ""))
+      with(sub, points(TimeCh, Sub_metering_1, type="l", col= "black"))
+      with(sub, points(TimeCh, Sub_metering_2, type="l", col= "red"))
+      with(sub, points(TimeCh, Sub_metering_3, type="l", col= "blue"))
+      legend("topright", pch=1, col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3" ))
+      plot(sub$TimeCh,sub$Global_reactive_power,type = "l", xlab = "datetime", ylab = "Voltage")
+})
 
-dev.off()
+
+
+#dev.off()
+
 

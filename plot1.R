@@ -1,9 +1,6 @@
 # Exploratory Data Analysis
 # Project 1
 
-require(data.table)
-
-
 # create a folder for this course if it does not exist already 
 if (!file.exists("DS4")) {
       dir.create("DS4")
@@ -32,13 +29,3 @@ png(file = "./ExData_Plotting1/plot1.png")
 hist(sub$Global_active_power, col="red", xlab="Global Active Power (kilowatts)", main = "Global Active Power")
 dev.off()
 
-
-
-
-
-
-
-
-
-
-# Data cleaning
