@@ -21,17 +21,17 @@ power <- read.table("household_power_consumption.txt", sep=";", na.strings = c("
 colnames(power) <- unlist(header)
 
 # Create the subset of data for the plots
-sub <- subset(power, Date == "2/1/2007" | Date == "2/2/2007")
+sub <- subset(power, Date == "1/2/2007" | Date == "2/2/2007")
 
 # Format the date and time fields
-sub$Date <- as.Date(sub$Date, format = "%m/%d/%Y") 
+sub$Date <- as.Date(sub$Date, format = "%d/%m/%Y") 
 timetemp <- paste(sub$Date, sub$Time)
 sub$TimeCh <- strptime(timetemp, format = "%Y-%m-%d %H:%M:%S") 
 
 
 png(file = "./ExData_Plotting1/plot3.png")
 
-with(sub, plot(TimeCh, Sub_metering_3, type = "n", ylab = "Energy Sub Metering", xlab = ""))
+with(sub, plot(TimeCh, Sub_metering_1, type = "n", ylab = "Energy Sub Metering", xlab = ""))
 with(sub, points(TimeCh, Sub_metering_1, type="l", col= "black"))
 with(sub, points(TimeCh, Sub_metering_2, type="l", col= "red"))
 with(sub, points(TimeCh, Sub_metering_3, type="l", col= "blue"))

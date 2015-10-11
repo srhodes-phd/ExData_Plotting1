@@ -22,30 +22,25 @@ power <- read.table("household_power_consumption.txt", sep=";", na.strings = c("
 colnames(power) <- unlist(header)
 
 # Create the subset of data for the plots
-sub <- subset(power, Date == "2/1/2007" | Date == "2/2/2007")
+sub <- subset(power, Date == "1/2/2007" | Date == "2/2/2007")
 
 # Format the date and time fields
-sub$Date <- as.Date(sub$Date, format = "%m/%d/%Y") 
+sub$Date <- as.Date(sub$Date, format = "%d/%m/%Y") 
 timetemp <- paste(sub$Date, sub$Time)
 sub$TimeCh <- strptime(timetemp, format = "%Y-%m-%d %H:%M:%S") 
 
 
-#png(file = "./ExData_Plotting1/plot4.png")
-
+png(file = "./ExData_Plotting1/plot4.png")
 par(mfrow = c(2,2))
-with(sub {
-      plot(sub$TimeCh,sub$Global_active_power,type = "l", xlab = "", ylab = "Global Active Power (kilowatts)")
-      plot(sub$TimeCh,sub$Votlage,type = "l", xlab = "datetime", ylab = "Voltage")
+with(sub, {
+      plot(TimeCh,Global_active_power,type = "l", xlab = "", ylab = "Global Active Power (kilowatts)")
+      plot(TimeCh,Voltage,type = "l", xlab = "datetime", ylab = "Voltage")
       with(sub, plot(TimeCh, Sub_metering_1, type = "n", ylab = "Energy Sub Metering", xlab = ""))
       with(sub, points(TimeCh, Sub_metering_1, type="l", col= "black"))
       with(sub, points(TimeCh, Sub_metering_2, type="l", col= "red"))
       with(sub, points(TimeCh, Sub_metering_3, type="l", col= "blue"))
       legend("topright", pch=1, col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3" ))
-      plot(sub$TimeCh,sub$Global_reactive_power,type = "l", xlab = "datetime", ylab = "Voltage")
+      plot(TimeCh,Global_reactive_power,type = "l", xlab = "", ylab = "Global Reactive Power")
 })
-
-
-
-#dev.off()
-
+dev.off()
 

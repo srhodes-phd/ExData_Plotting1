@@ -20,8 +20,8 @@ header <- read.table("household_power_consumption.txt", sep=";", nrows=1)
 power <- read.table("household_power_consumption.txt", sep=";", na.strings = c("?"), skip=1)
 colnames(power) <- unlist(header)
 
-# Create the subset of data for the plots
-sub <- subset(power, Date == "2/1/2007" | Date == "2/2/2007")
+# Create the subset of data for the plots, note that date format in file is DAY/MONTH/YEAR
+sub <- subset(power, Date == "1/2/2007" | Date == "2/2/2007")
 
 str(sub)
 
