@@ -35,7 +35,7 @@ with(sub, plot(TimeCh, Sub_metering_1, type = "n", ylab = "Energy Sub Metering",
 with(sub, points(TimeCh, Sub_metering_1, type="l", col= "black"))
 with(sub, points(TimeCh, Sub_metering_2, type="l", col= "red"))
 with(sub, points(TimeCh, Sub_metering_3, type="l", col= "blue"))
-legend("topright", pch=1, col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3" ))
+legend("topright", pch = "__", bty = "n", col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3" ))
 
 dev.off()
 
